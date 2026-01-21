@@ -8,8 +8,9 @@ int main (){
 		max = a;
 	} else if (b>a && b>c) {
 		max = b;
-	} else 
+	} else {
 		max = c;
-		
+	}
 	printf("So lon nhat la: %.2f", max);
+	return 0;
 }
