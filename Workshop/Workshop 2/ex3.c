@@ -8,6 +8,12 @@ int main (){
 		fflush(stdin);
 	}
 		int dem = 1;
+		while(dem<=n){
+			printf(" %d", dem);
+			dem++;
+		}
+		printf("\n");
+		dem = 1;
 		while(dem<=10){
 			printf("%d * %d = %d\n", n, dem, n*dem);
 			dem++;
