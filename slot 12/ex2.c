@@ -1,18 +1,25 @@
 #include <stdio.h>
-int timSoLonNhat(int a, int b, int c) {
+int timMax(int a, int b, int c) {
     int max = a;
-    if (b > max) {
-        max = b;
-    }
-    if (c > max) {
-        max = c;
-    }
+    if(b > max) max = b;
+    if(c > max) max = c;
     return max;
 }
+int nhapInt() {
+    int soInt;
+    printf("Nhap so: ");
+    while(scanf("%d", &soInt) != 1 ) {
+        printf("Nhap lai so duong: ");
+        while(getchar() != '\n'); 
+    }
+    return soInt;
+}
 int main() {
-    int x, y, z;
-    scanf("%d %d %d", &x, &y, &z);
-    int soMax = timSoLonNhat(x, y, z);
-    printf("So lon nhat trong 3 so la: %d\n", soMax);
+    int a = nhapInt();
+    int b = nhapInt();
+    int c = nhapInt();
+    
+    int kq = timMax(a, b, c);
+    printf("So lon nhat la %d", kq);
     return 0;
 }
