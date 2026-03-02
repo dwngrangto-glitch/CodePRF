@@ -1,34 +1,32 @@
 #include <stdio.h>
-#include <stdbool.h>
-#include <math.h>
-// Hàm kiểm tra số nguyên tố
-bool is_prime(int n) {
-    if (n < 2) return false;
-    if (n == 2) return true;   
-    // Chỉ cần kiểm tra đến căn bậc hai của n
-    for (int i = 2; i <= sqrt(n); i++) {
-        if (n % i == 0) {
-            return false;
-        }
-    }
-    return true;
+void show_menu() {
+    printf("\n====MAY TINH BO TUI====\n1. Cong | 2. Tru | 3. Nhan | 4. Chia | 0. Thoat\n=======================\nChon: ");
 }
+void processor() {
+    int choice;
+    float n1, n2;
+    
+    while (1) {
+        show_menu();
+        if (scanf("%d", &choice) != 1) break;
+        if (choice == 0) { printf("Da thoat.\n"); break; }
+        if (choice < 1 || choice > 4) { printf("Khong hop le!\n"); continue; }
 
-int main() {
-    int a, b;
-    printf("Nhap vao khoang [a, b]: ");
-    scanf("%d %d", &a, &b);
-    printf("Cac so nguyen to trong khoang [%d, %d] la:\n", a, b);
-    for (int i = a; i <= b; i++) {
-        // Neu i la so chan va lon hon 2, bo qua ngay lap tuc
-        if (i > 2 && i % 2 == 0) {
-            continue;
-        }
-        // Goi ham kiem tra neu khong bi loai bo boi lenh continue
-        if (is_prime(i)) {
-            printf("%d ", i);
+        printf("Nhap 2 so: ");
+        scanf("%f %f", &n1, &n2);
+
+        switch (choice) {
+            case 1: printf("%.2f + %.2f = %.2f\n", n1, n2, n1 + n2); break;
+            case 2: printf("%.2f - %.2f = %.2f\n", n1, n2, n1 - n2); break;
+            case 3: printf("%.2f * %.2f = %.2f\n", n1, n2, n1 * n2); break;
+            case 4: 
+                if (n2 != 0) printf("%.2f / %.2f = %.2f\n", n1, n2, n1 / n2);
+                else printf("Loi: Khong the chia cho 0!\n");
+                break;
         }
     }
-    printf("\n");
+}
+int main() {
+    processor();
     return 0;
 }

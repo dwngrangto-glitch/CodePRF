@@ -1,56 +1,27 @@
-#include <stdio.h>
-void show_menu(){
-	printf("====MAY TINH BO TUI====\n");
-	printf("1. Phep cong.\n");
-	printf("2. Phep tru.\n");
-	printf("3. Phep nhan.\n");
-	printf("4. Phep chia.\n");
-	printf("0. Dung chuong trinh.\n");
-	printf("=======================\n");
-	printf("Chon phep tinh: ");
+#include<stdio.h>
+float calculate_salary(float hours, float rate){
+	float salary;
+	if(hours <= 40){
+		salary = hours*rate;
+	} else {
+		float overtime = hours - 40;
+		salary = 40*rate + (overtime*1.5*rate);
+	}	
+	return salary;
 }
-
-void processor(){
-	int choice;
-	float num1, num2, kq;
-	
-	do {
-		show_menu();
-		scanf("%d", &choice);
-	switch(choice){
-		case 1: case 2: case 3: case 4:
-			printf("Nhap vao so thu nhat: "); scanf("%f", &num1);
-			printf("Nhap vao so thu hai: "); scanf("%f", &num2);
-		if(choice == 1){
-			kq = num1 + num2;
-			printf("%.0f + %.0f = %.0f\n", num1, num2, kq);
-		} else if (choice == 2){
-			kq = num1 - num2;
-			printf("%.0f - %.0f = %.0f\n", num1, num2, kq);
-		} else if (choice == 3){
-			kq = num1 * num2;
-			printf("%.0f * %.0f = %.0f\n", num1, num2, kq);
-		} else if(choice == 4){
-			if(num2 != 0){	
-			kq = num1 / num2;
-			printf("%.0f / %.0f = %.0f\n", num1, num2, kq);
-		} else {
-			printf("Khong the chia cho 0\n");
-			}
-		}
-			break;
-			
-		case 0:
-			printf("Da thoat chuong trinh.\n");
-			break;
-	default:
-		printf("Lua chon khong hop le!\n\n");
-		}
-	
-	} while (choice != 0);
-}
-
 int main(){
-	processor();
+	float hours, rate;
+	printf("Nhap so gio lam viec: ");
+	while(scanf("%f", &hours) != 1 || hours <= 0){
+		printf("So gio khong hop le!\nNhap lai so gio: ");
+		while(getchar() != '\n');
+	}
+	printf("Nhap muc luong: ");
+	while(scanf("%f", &rate) != 1 || rate <= 0){
+		printf("Muc luong khong hop le!\nNhap lai muc luong: ");
+		while(getchar() != '\n');
+	}
+	float tongLuong = calculate_salary(hours, rate);
+	printf("Luong cua cong nhan sau %.0f h la: %.0f VND", hours, tongLuong);
 	return 0;
 }

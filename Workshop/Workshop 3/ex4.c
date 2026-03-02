@@ -1,36 +1,45 @@
-/*Bài 3: Tính lương công nhân theo giờ làm
-•	Yêu cầu: Viết hàm calculate_salary(float hours, float rate).
-•	Logic:  Giờ tiêu chuẩn: 40h/tuần.
-o	Nếu làm quá 40h, những giờ thừa (overtime) được tính hệ số 1.5.
-o	Sử dụng if để kiểm tra điều kiện overtime.*/
-
-#include<stdio.h>
-
-float calculate_salary(float hours, float rate){
-	float salary;
-	if(hours <= 40){
-		salary = hours*rate;
+#include <stdio.h>
+int is_leap_year(int year){
+	if(year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)){
+		return 1;
 	} else {
-		float overtime = hours - 40;
-		salary = 40*rate + (overtime*1.5*rate);
+		return 0;
 	}
-	
-	return salary;
 }
-
+int get_days_in_month(int month, int year){
+	switch(month){
+		case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+			return 31;
+		case 4: case 6: case 9: case 11:
+			return 30;
+		case 2:
+			if(is_leap_year(year)){
+				return 29;
+			} else {
+				return 28;
+			}
+		default:
+			return -1;		
+	}
+}
 int main(){
-	float hours, rate;
-	printf("Nhap so gio lam viec: ");
-	while(scanf("%f", &hours) != 1 || hours <= 0){
-		printf("So gio khong hop le!\nNhap lai so gio: ");
-		while(getchar() != '\n');
+	int month, year, days;
+	while(1) {
+	printf("Nhap thang: ");
+	if(scanf("%d", &month) != 1 || month < 1 || month > 12){
+		printf("Thang khong hop le!\n");
+		fflush(stdin);
+		continue;
 	}
-	printf("Nhap muc luong: ");
-	while(scanf("%f", &rate) != 1 || rate <= 0){
-		printf("Muc luong khong hop le!\nNhap lai muc luong: ");
-		while(getchar() != '\n');
+	printf("Nhap nam: ");
+	if(scanf("%d", &year) != 1 || year <= 0){
+		printf("Nam khong hop le!\n");
+		fflush(stdin);
+		continue;
+		}
+	break;
 	}
-	float tongLuong = calculate_salary(hours, rate);
-	printf("Luong cua cong nhan sau %.0f h la: %.0f", hours, tongLuong);
+	days = get_days_in_month(month , year);
+	printf("Thang %d nam %d co %d ngay.\n", month, year, days);
 	return 0;
-}
+	}
