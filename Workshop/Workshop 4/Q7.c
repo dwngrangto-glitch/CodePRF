@@ -4,32 +4,30 @@
 #include <math.h>
 #include <ctype.h>
 
-
 int main() {
   system("cls");
   printf("INPUT:\n");
   //INPUT - @STUDENT:ADD YOUR CODE FOR INPUT HERE:
   int n;
   scanf("%d", &n);
-  int a[n];
-  for(int i = 0; i < n; i++){
-  	scanf("%d", &a[i]);
-  }
-
-
-  // ixed Do not edit anything here.
+  
+  // Fixed Do not edit anything here.
   printf("\nOUTPUT:\n");
   //@STUDENT: WRITE YOUR OUTPUT HERE:
-  
-  int found = 0;
-  for(int i = 0; i < n; i++)
-  	if (a[i]%2==0){
-  		printf("%d ", i);
-  		found = 1; //đánh dấu là có có số chẵn
-	  }
-	if (found == 0){
-		printf("Not found");
+  if (n >= 2) {
+      for (int i = 1; i <= n; i++) {
+          for (int j = 1; j <= n - i; j++) {
+              printf(" ");
+          }
+          for (int k = 1; k <= 2 * i - 1; k++) {
+              printf("*");
+          }
+          printf("\n");
+      }
   }
+  
+  
+  
   //--FIXED PART - DO NOT EDIT ANY THINGS HERE
   printf("\n");
   system ("pause");

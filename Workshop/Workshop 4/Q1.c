@@ -9,27 +9,23 @@ int main() {
   system("cls");
   printf("INPUT:\n");
   //INPUT - @STUDENT:ADD YOUR CODE FOR INPUT HERE:
-  int n;
-  scanf("%d", &n);
-  int a[n];
-  for(int i = 0; i < n; i++){
-  	scanf("%d", &a[i]);
-  }
+  float a, b;
+  float result;
+  int check = scanf("%f%f", &a, &b);
 
-
-  // ixed Do not edit anything here.
+  // Fixed Do not edit anything here.
   printf("\nOUTPUT:\n");
   //@STUDENT: WRITE YOUR OUTPUT HERE:
-  
-  int found = 0;
-  for(int i = 0; i < n; i++)
-  	if (a[i]%2==0){
-  		printf("%d ", i);
-  		found = 1; //đánh dấu là có có số chẵn
-	  }
-	if (found == 0){
-		printf("Not found");
+  if(check != 2){
+  	printf("Invalid input");
+  } else {
+  	result = cbrt(a*a + b*b);
+  	printf("%.2f", result);
   }
+
+  
+  
+  
   //--FIXED PART - DO NOT EDIT ANY THINGS HERE
   printf("\n");
   system ("pause");
